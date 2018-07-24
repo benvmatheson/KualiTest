@@ -21,10 +21,14 @@ class ElevatorController {
         });
     }
     
-    initiateMoveElevator() {
-        // cannot be above max floor
-        // cannot be below min floor
-        // find closest elevator
+    initiateMoveElevator(floor) {
+        if (floor > this.numFloors) {
+            throw 'That floor is higher than the highest floor';
+        } else if (floor < this.bottomFloor) {
+            throw 'That floor is lower than the lowest floor';
+        } else {
+            this.findClosestElevator().moveElevator(floor);
+        }
     }
 
     findClosestElevator() {
