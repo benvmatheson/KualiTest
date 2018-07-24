@@ -1,10 +1,12 @@
 export default class elevator {
-    constructor(floor) {
+    constructor(floor, id) {
         this.floor = floor;
         this.doorOpen = false;
         this.occupied = false;
         this.totalTrips = 0;
-        this.totalFloorsPassed;
+        this.totalFloorsPassed = 0;
+        // Fix if there's time
+        this.id = Math.floor((Math.random() * 100000) + 1);
     }
 
     reportMove() {
