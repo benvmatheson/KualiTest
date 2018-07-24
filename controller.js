@@ -1,12 +1,11 @@
 import elevator from './elevator';
 
 class ElevatorController {
-    const activeElevators = [];
-    const numFloors = 0;
-    const bottomFloor = 1;
-
-    initialize(floors, elevators) {
-        // Finish function
+    constructor(floors, elevators) {
+        this.activeElevators = new Array(elevators).fill(new Elevator(1));
+        this.inactiveElevators = [];
+        this.numFloors = floors;
+        this.bottomFloor = 1;
     }
 
     activateElevator(elevator) {
