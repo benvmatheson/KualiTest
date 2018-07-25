@@ -8,21 +8,33 @@ export default class elevator {
         // Fix if there's time
         this.id = Math.floor((Math.random() * 100000) + 1);
         this.targetFloor = null;
+        // Combine with target floor if there's time
+        this.additionalStops = [];
     }
 
     reportMove() {
-        // Finish function
+        console.log(`Elevator ${this.id} moved to ${this.floor}`)
     }
 
     reportDoorState() {
-        // increment total floors
-        // Finish function
+        console.log(`Elevator ${this.id} opened doors on floor ${this.floor}`)
     }
 
-    moveElevator(floor, deactivate) {
+    openDoors(floor) {
+        if (targetFloor = floor) {
+            this.occupied = false;
+        }
+        this.reportDoorState();
+    }
+
+    moveElevator = (floor, deactivate) => {
+        this.occupied = true;
         this.totalTrips++;
         this.targetFloor = floor;
         while (this.floor !== this.targetFloor) {
+            if (this.additionalStops.includes(floor)) {
+                this.openDoors(floor);
+            }
             if (this.floor < this.targetFloor) {
                 this.targetFloor--;
             } else if (this.floor > this.targetFloor) {

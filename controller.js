@@ -40,6 +40,7 @@ class ElevatorController {
         this.activeElevators.forEach(elevator => {
             if (elevator.targetFloor < floor < elevator.floor
                 || elevator.targetFloor > floor > elevator.floor) {
+                    elevator.additionalStops.push(floor);
                     return elevator;
                 }
         });
