@@ -7,6 +7,7 @@ export default class elevator {
         this.totalFloorsPassed = 0;
         // Fix if there's time
         this.id = Math.floor((Math.random() * 100000) + 1);
+        this.targetFloor = null;
     }
 
     reportMove() {

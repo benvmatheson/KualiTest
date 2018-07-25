@@ -27,13 +27,27 @@ class ElevatorController {
         } else if (floor < this.bottomFloor) {
             throw 'That floor is lower than the lowest floor';
         } else {
-            this.findClosestElevator().moveElevator(floor);
+            this.findClosestElevator(floor).moveElevator(floor);
         }
     }
 
-    findClosestElevator() {
-        // Is an occupied elevator going to pass this floor
-        // Is there an unoccupied elevator on this floor
-        // Closest unoccupied
+    findClosestElevator(floor) {
+        this.activeElevators.forEach(elevator => {
+            if (elevator.floor === floor) {
+                return elevator;
+            }
+        });
+        this.activeElevators.forEach(elevator => {
+            if (elevator.targetFloor < floor < elevator.floor
+                || elevator.targetFloor > floor > elevator.floor) {
+                    return elevator;
+                }
+        });
+        this.activeElevators.reduce((closest, elevator) => {
+            if (Math.abs(elevator.floor - floor) < closest) {
+                return elevator;
+            }
+            return closest;
+        });
     }
 }
