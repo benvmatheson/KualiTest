@@ -27,7 +27,7 @@ class ElevatorController {
         } else if (floor < this.bottomFloor) {
             throw 'That floor is lower than the lowest floor';
         } else {
-            this.findClosestElevator(floor).moveElevator(floor);
+            this.findClosestElevator(floor).moveElevator(floor, this.deactivateElevator);
         }
     }
 

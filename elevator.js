@@ -19,10 +19,20 @@ export default class elevator {
         // Finish function
     }
 
-    moveElevator() {
-        // increment totalTrips
-        // Finish function
-        // deactivate if over 100 trips
+    moveElevator(floor, deactivate) {
+        this.totalTrips++;
+        this.targetFloor = floor;
+        while (this.floor !== this.targetFloor) {
+            if (this.floor < this.targetFloor) {
+                this.targetFloor--;
+            } else if (this.floor > this.targetFloor) {
+                this.targetFloor++;
+            }
+            this.reportMove();
+        }
+        if (this.totalTrips > 100) {
+            deactivate(this);
+        }
     }
 
     setOccupied(occupied) {
